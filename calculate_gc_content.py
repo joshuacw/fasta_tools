@@ -8,9 +8,8 @@ from decimal import *
 getcontext().prec = 2
 
 parser = argparse.ArgumentParser()
-parser.add_argument("fasta")
+parser.add_argument("fasta", help = "A .fasta file to calculate GC content.")
 args = parser.parse_args()
-print args.fasta
 
 a_count = 0
 c_count = 0
@@ -24,7 +23,7 @@ t_pct = 0
 
 total_bases = 0
 
-with open(sys.argv[1], 'r') as fasta:
+with open(args.fasta, 'r') as fasta:
     for line in fasta:
         a_count = a_count + line.count("A")  
         c_count = c_count + line.count("C")
